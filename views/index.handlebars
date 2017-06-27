@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <h1>Scrape The News</h1>
+    </div>
+  </div>
+  <div class= "row">
+    <div class="col-md-12 text-center">
+      <button id="scrapeESPN" class= "btn" "btn-primary">Scrape the News</button>
+    </div>
+  </div>
+  <div class= "row">
+    <div class="col-md-12">
+      {{#each newsScrape}}
+        <h3>{{this.title}}</h3>
+        <a href="{{this.link}}">{{this.link}}</a>
+      {{/each}}
+    </div>
+  </div>
+</div>
+
