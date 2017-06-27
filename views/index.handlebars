@@ -6,14 +6,15 @@
   </div>
   <div class= "row">
     <div class="col-md-12 text-center">
-      <button id="scrapeESPN" class= "btn" "btn-primary">Scrape the News</button>
+      <button id="scrapeESPN" class= "btn btn-primary">Scrape Sports News</button>
     </div>
   </div>
   <div class= "row">
     <div class="col-md-12">
+      <div id="notes"></div>
       {{#each newsScrape}}
-        <h3>{{this.title}}</h3>
-        <a href="{{this.link}}">{{this.link}}</a>
+        <h3 data-id= "{{this._id}}">{{this.title}}</h3>
+        <a href="http://www.espn.com/{{this.link}}">http://www.espn.com/{{this.link}}</a>
       {{/each}}
     </div>
   </div>
