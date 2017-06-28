@@ -1,8 +1,10 @@
 $("#scrapeESPN").on("click", function() {
+    $("#scrapeESPN").text("Scraping ESPN...");
     $.get("/scrapeespn").done(refresh);
 });
 
 $("#scrapeFox").on("click", function() {
+    $("#scrapeFox").text("Scraping FOX Sports...");
     $.get("/scrapefox").done(refresh);
 });
 
@@ -23,13 +25,11 @@ $(document).on("click", "h3", function() {
     .done(function(data) {
       console.log(data);
       // The title of the article
-      $("#notes").append("<h2>" + data.articleNumber + ". " + data.title + "</h2>");
-      // An input to enter a new title
-      $("#notes").append("<h4><input id='titleinput' name='title' placeholder='Title' ></h4>");
-      // A textarea to add a new note body
-      $("#notes").append("<textarea id='bodyinput' name='body' placeholder='Note' rows='10' cols='50'></textarea>");
-      // A button to submit a new note, with the id of the article saved to it
-      $("#notes").append("<p><button data-id='" + data._id + "' id='savenote'>Save Note</button></p>");
+      $("#notes").append("<div class='panel panel-primary'><div class='panel-heading'><h2>" + data.articleNumber + ". " + data.title + "</h2>" +
+                        "</div><div class='panel-body'><h3>Enter a Note for This Article:</h3><h4><input id='titleinput' name='title' placeholder='Title' ></h4>" +
+                        "<textarea id='bodyinput' name='body' placeholder='Note' rows='10' cols='50'></textarea>" +
+                        "<p><button data-id='" + data._id + "' id='savenote'>Save Note</button></p>" +
+                        "<a href='" + data.link + "' target='_blank'>" + data.link + "</a></div></div>");
     });
       // If there's a note in the article
         $.get("/notes/" + thisId, function(req) {

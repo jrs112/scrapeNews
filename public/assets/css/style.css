@@ -1,0 +1,26 @@
+body {
+    background-image: url("grasstwo.jpg");
+    background-size: 100%;
+}
+
+
+.header {
+    background: rgba(155,184,204,0.75);
+    text-align: center;
+}
+
+.bottomheader {
+    border-bottom-style: solid;
+    border-bottom-color: black;
+    border-bottom-width: 2px;
+    padding: 20px;
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: 50px;
+}
+
+#scrapeESPN {
+    margin-right: 5px;
+}
