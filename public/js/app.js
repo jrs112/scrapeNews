@@ -20,14 +20,15 @@ $(document).on("click", "h3", function() {
       // The title of the article
       $("#notes").append("<h2>" + data.title + "</h2>");
       // An input to enter a new title
-      $("#notes").append("<h4><input id='titleinput' name='title' placeholder='Enter Note Title' ></h4>");
+      $("#notes").append("<h4><input id='titleinput' name='title' placeholder='Title' ></h4>");
       // A textarea to add a new note body
-      $("#notes").append("<textarea id='bodyinput' name='body' placeholder='Enter Note'></textarea>");
+      $("#notes").append("<textarea id='bodyinput' name='body' placeholder='Note' rows='10' cols='50'></textarea>");
       // A button to submit a new note, with the id of the article saved to it
       $("#notes").append("<p><button data-id='" + data._id + "' id='savenote'>Save Note</button></p>");
     });
       // If there's a note in the article
         $.get("/notes/" + thisId, function(req) {
+          if (req.length > 0) {
             console.log(req);
             $("#prevNotes").empty();
             $("#prevNotes").prepend("<h3>Previous Notes:</h3>");
@@ -41,15 +42,17 @@ $(document).on("click", "h3", function() {
             $("#prevTitle-" + i).append(req[i].title);
             $("#prevNote-" + i).append(req[i].body + "<p>_______________________</p>");
 
-
-
         }
+      } else {
+        $("#prevNotes").empty();
+        $("#prevNotes").prepend("<h3>There are no previous notes for this article.</h3>");
+      }
     //     // Place the title of the note in the title input
         // $("#titleinput").val(data.note.title);
         // // Place the body of the note in the body textarea
         // $("#bodyinput").val(data.note.body);
       });
-
+        $(window).scrollTop($('#notes').offset().top-20)
 });
 
 
@@ -75,6 +78,7 @@ $(document).on("click", "#savenote", function() {
       console.log(data);
       // Empty the notes section
       $("#notes").empty();
+      $("#prevNotes").empty();
     });
 
   // Also, remove the values entered in the input and textarea for note entry
