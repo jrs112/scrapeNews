@@ -6,7 +6,7 @@ module.exports = function(app) {
 // This will get the articles we scraped from the mongoDB
 app.get("/", function(req, res) {
   // Grab every doc in the Articles array
-  Article.find({}, function(error, doc) {
+  Article.find().sort({"articleNumber": -1}).exec(function(error, doc) {
     // Log any errors
     if (error) {
       console.log(error);

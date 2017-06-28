@@ -2,7 +2,9 @@
 var mongoose = require("mongoose");
 // Create Schema class
 var Schema = mongoose.Schema;
-
+var autoIncrement = require('mongoose-auto-increment');
+var connection = mongoose.createConnection("mongodb://localhost/scrapenewsdb");
+autoIncrement.initialize(connection);
 // Create article schema
 var ArticleSchema = new Schema({
   // title is a required string
@@ -21,9 +23,18 @@ var ArticleSchema = new Schema({
   note: {
     type: Schema.Types.ObjectId,
     ref: "Note"
+  },
+   date: {
+    type: Date,
+    default: Date.now
   }
 });
 
+ArticleSchema.plugin(autoIncrement.plugin, {
+  model: 'Article',
+  field: "articleNumber",
+  startAt: 1
+});
 // Create the Article model with the ArticleSchema
 var Article = mongoose.model("Article", ArticleSchema);
 

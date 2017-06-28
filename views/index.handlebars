@@ -14,8 +14,8 @@
       <div id="notes"></div>
       <div id="prevNotes"></div>
       {{#each newsScrape}}
-        <h3 data-id= "{{this._id}}">{{this.title}}</h3>
-        <a href="http://www.espn.com/{{this.link}}">http://www.espn.com/{{this.link}}</a>
+        <h3 data-id= "{{this._id}}">{{this.articleNumber}}. {{this.date}}- {{this.title}}</h3>
+        <a href="http://www.espn.com/{{this.link}}">{{this.link}}</a>
          <div id="notes"></div>
          <div id="prevNotes"></div>
       {{/each}}

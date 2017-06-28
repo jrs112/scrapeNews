@@ -1,5 +1,5 @@
 $("#scrapeESPN").on("click", function() {
-    $.get("/scrape", refresh);
+    $.get("/scrape").done(refresh);
 });
 
 
@@ -18,7 +18,7 @@ $(document).on("click", "h3", function() {
     .done(function(data) {
       console.log(data);
       // The title of the article
-      $("#notes").append("<h2>" + data.title + "</h2>");
+      $("#notes").append("<h2>" + data.articleNumber + ". " + data.title + "</h2>");
       // An input to enter a new title
       $("#notes").append("<h4><input id='titleinput' name='title' placeholder='Title' ></h4>");
       // A textarea to add a new note body
@@ -89,5 +89,5 @@ $(document).on("click", "#savenote", function() {
 function refresh() {
     setTimeout(function() {
         window.location.href = "/";
-    }, 1000);
+    }, 2000);
 }
