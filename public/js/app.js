@@ -36,20 +36,24 @@ $(document).on("click", "h3", function() {
           if (req.length > 0) {
             console.log(req);
             $("#prevNotes").empty();
+            $("#prevNotes").addClass("well");
             $("#prevNotes").prepend("<h3>Previous Notes:</h3>");
         for (var i = 0; i < req.length; i++) {
-            var prevTitle = $("<h4>");
-            var prevNote = $("<p>");
-            prevTitle.attr("id", "prevTitle-" + i);
-            prevNote.attr("id", "prevNote-" + i);
-            prevNote.append(prevTitle);
-            $("#prevNotes").append(prevNote);
-            $("#prevTitle-" + i).append(req[i].title);
-            $("#prevNote-" + i).append(req[i].body + "<p>_______________________</p>");
+            $("#prevNotes").append("<div class='panel panel-info'><div class='panel-heading'><h4>" + req[i].title +
+                                   "</h4></div><div class='panel-body'><p>" + req[i].body + "</p></div></div>");
+            // var prevTitle = $("<h4>");
+            // var prevNote = $("<p>");
+            // prevTitle.attr("id", "prevTitle-" + i);
+            // prevNote.attr("id", "prevNote-" + i);
+            // prevNote.append(prevTitle);
+            // $("#prevNotes").append(prevNote);
+            // $("#prevTitle-" + i).append(req[i].title);
+            // $("#prevNote-" + i).append(req[i].body + "<p>_______________________</p>");
 
         }
       } else {
         $("#prevNotes").empty();
+        $("#prevNotes").addClass("well");
         $("#prevNotes").prepend("<h3>There are no previous notes for this article.</h3>");
       }
     //     // Place the title of the note in the title input
@@ -84,6 +88,7 @@ $(document).on("click", "#savenote", function() {
       // Empty the notes section
       $("#notes").empty();
       $("#prevNotes").empty();
+      window.location.href = "/";
     });
 
   // Also, remove the values entered in the input and textarea for note entry

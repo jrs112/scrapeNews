@@ -1,7 +1,7 @@
 <div class="container-fluid">
-  <div class="row header">
+  <div class="row topheader">
     <div class="col-md-12 text-center">
-      <h1>Scrape Sporting News</h1>
+      <h1>Sporting News</h1>
     </div>
   </div>
   <div class= "row header bottomheader">
@@ -18,7 +18,7 @@
       <div id="prevNotes"></div>
       {{#each newsScrape}}
         <div class="well">
-          <h3 data-id= "{{this._id}}">{{this.articleNumber}}. {{this.date}}- {{this.title}}</h3>
+          <h3 data-id= "{{this._id}}"><span class="listInfo">{{this.articleNumber}}. {{this.date}}-</span> <span class="listingTitle">{{this.title}}</span></h3>
           <a href="{{this.link}}" target="_blank">{{this.link}}</a>
         </div>
       {{/each}}
