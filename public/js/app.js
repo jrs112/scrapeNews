@@ -1,6 +1,11 @@
 $("#scrapeESPN").on("click", function() {
-    $.get("/scrape").done(refresh);
+    $.get("/scrapeespn").done(refresh);
 });
+
+$("#scrapeFox").on("click", function() {
+    $.get("/scrapefox").done(refresh);
+});
+
 
 
 $(document).on("click", "h3", function() {
