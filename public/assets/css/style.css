@@ -23,9 +23,11 @@ h1 {
     font-size: 75px;
 }
 
-#scrapeESPN {
+#scrapeESPN,
+#scrapeFox {
     margin-right: 5px;
 }
+
 
 .listInfo {
     color: blue;

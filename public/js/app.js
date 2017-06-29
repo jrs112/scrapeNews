@@ -8,6 +8,10 @@ $("#scrapeFox").on("click", function() {
     $.get("/scrapefox").done(refresh);
 });
 
+$("#scrapeCBS").on("click", function() {
+    $("#scrapeCBS").text("Scraping CBS Sports...");
+    $.get("/scrapecbs").done(refresh);
+});
 
 
 $(document).on("click", "h3", function() {
@@ -41,14 +45,6 @@ $(document).on("click", "h3", function() {
         for (var i = 0; i < req.length; i++) {
             $("#prevNotes").append("<div class='panel panel-info'><div class='panel-heading'><h4>" + req[i].title +
                                    "</h4></div><div class='panel-body'><p>" + req[i].body + "</p></div></div>");
-            // var prevTitle = $("<h4>");
-            // var prevNote = $("<p>");
-            // prevTitle.attr("id", "prevTitle-" + i);
-            // prevNote.attr("id", "prevNote-" + i);
-            // prevNote.append(prevTitle);
-            // $("#prevNotes").append(prevNote);
-            // $("#prevTitle-" + i).append(req[i].title);
-            // $("#prevNote-" + i).append(req[i].body + "<p>_______________________</p>");
 
         }
       } else {
@@ -56,10 +52,6 @@ $(document).on("click", "h3", function() {
         $("#prevNotes").addClass("well");
         $("#prevNotes").prepend("<h3>There are no previous notes for this article.</h3>");
       }
-    //     // Place the title of the note in the title input
-        // $("#titleinput").val(data.note.title);
-        // // Place the body of the note in the body textarea
-        // $("#bodyinput").val(data.note.body);
       });
         $(window).scrollTop($('#notes').offset().top-20)
 });

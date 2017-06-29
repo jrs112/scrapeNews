@@ -35,7 +35,7 @@ app.get("/scrapeespn", function(req, res) {
 
       // Add the text and href of every link, and save them as properties of the result object
       result.title = $(this).children("h1").text();
-      result.link = "http://www.espn.com/" + $(this).parent("a").attr("href");
+      result.link = "http://www.espn.com" + $(this).parent("a").attr("href");
 
       // Using our Article model, create a new entry
       // This effectively passes the result object to the entry (and the title and link)
@@ -96,6 +96,42 @@ app.get("/scrapefox", function(req, res) {
   res.send("Scrape Complete");
 });
 
+app.get("/scrapecbs", function(req, res) {
+  // First, we grab the body of the html with request
+  request("http://www.cbssports.com/", function(error, response, html) {
+    // Then, we load that into cheerio and save it to $ for a shorthand selector
+    var $ = cheerio.load(html);
+    // Now, we grab every h2 within an article tag, and do the following:
+    $("h3.article-list-item-title").each(function(i, element) {
+
+      // Save an empty result object
+      var result = {};
+
+      // Add the text and href of every link, and save them as properties of the result object
+      result.title = $(this).text();
+      result.link = "http://www.cbssports.com" + $(this).children("a").attr("href");
+
+      // Using our Article model, create a new entry
+      // This effectively passes the result object to the entry (and the title and link)
+      var entry = new Article(result);
+
+      // Now, save that entry to the db
+      entry.save(function(err, doc) {
+        // Log any errors
+        if (err) {
+          console.log(err);
+        }
+        // Or log the doc
+        else {
+          console.log(doc);
+        }
+      });
+
+    });
+  });
+  // Tell the browser that we finished scraping the text
+  res.send("Scrape Complete");
+});
 // Grab an article by it's ObjectId
 app.get("/articles/:id", function(req, res) {
   // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
