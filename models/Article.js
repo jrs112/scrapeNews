@@ -1,9 +1,10 @@
 // Require mongoose
+var keys = require("../keys.js");
 var mongoose = require("mongoose");
 // Create Schema class
 var Schema = mongoose.Schema;
 var autoIncrement = require('mongoose-auto-increment');
-var connection = mongoose.createConnection("mongodb://localhost/scrapenewsdb");
+var connection = mongoose.createConnection("mongodb://john:" + keys.password + "@ds059524.mlab.com:59524/scrapenewsdb");
 autoIncrement.initialize(connection);
 // Create article schema
 var ArticleSchema = new Schema({

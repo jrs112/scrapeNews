@@ -1,4 +1,5 @@
 // Dependencies
+var keys = require("./keys.js");
 var express = require("express");
 var bodyParser = require("body-parser");
 var logger = require("morgan");
@@ -30,7 +31,7 @@ app.use(express.static(__dirname + "/public"));
 
 
 // Database configuration with mongoose
-mongoose.connect("mongodb://localhost/scrapenewsdb");
+mongoose.connect("mongodb://john:" + keys.password + "@ds059524.mlab.com:59524/scrapenewsdb");
 var db = mongoose.connection;
 
 // Show any mongoose errors

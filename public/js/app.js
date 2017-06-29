@@ -91,5 +91,5 @@ $(document).on("click", "#savenote", function() {
 function refresh() {
     setTimeout(function() {
         window.location.href = "/";
-    }, 2000);
+    }, 2500);
 }
