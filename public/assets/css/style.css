@@ -15,8 +15,7 @@ body {
     border-bottom-style: solid;
     border-bottom-color: black;
     border-bottom-width: 2px;
-    padding: 20px;
-    margin-bottom: 10px;
+    padding-bottom: 10px;
 }
 
 h1 {
@@ -28,6 +27,11 @@ h1 {
     margin-right: 5px;
 }
 
+#bgImage {
+    overflow-x:hidden;
+    width: 100%;
+    height: 400px;
+}
 
 .listInfo {
     color: blue;
@@ -36,3 +40,4 @@ h1 {
     font-size: 25px;
     font-family: 'Droid Serif', serif;
 }
+
